@@ -1,7 +1,7 @@
 import soundfile as sf
 import numpy as np
 
-audio_path = "dataset/reference/sample.wav" #locate our audio recording
+audio_path = "../dataset/reference/sample.wav" #locate our audio recording
 
 audio_data, sample_rate = sf.read(audio_path) #loading the audio
 
