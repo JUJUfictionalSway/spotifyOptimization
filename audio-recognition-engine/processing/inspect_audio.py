@@ -1,5 +1,10 @@
+import matplotlib
 import soundfile as sf
 import numpy as np
+import matplotlib.pyplot as plt
+
+print("matplotlib backend:", matplotlib.get_backend())
+
 
 audio_path = "../dataset/reference/sample.wav" # locate our audio recording
 
@@ -45,3 +50,21 @@ if len(nonzero_frames) > 0:
           nonzero_frames[0] / sample_rate, "seconds")
 else:
     print("Audio contains only zero-valued samples.")
+
+
+time = np.arange(len(audio_data)) / sample_rate # time axis 
+
+plt.figure(figsize=(14,6))
+
+for channel in range(audio_data.shape[1]):
+    plt.plot(time, audio_data[:, channel],
+             label=f"channel{channel + 1}")
+
+plt.title("audio waveform")
+plt.xlabel("Time (seconds)")
+plt.ylabel("Amplitude")
+plt.legend()
+plt.grid()
+
+plt.tight_layout()
+plt.show()
